@@ -178,3 +178,36 @@ async function convertCurrency() {
         convertBtn.disabled = false;
     }
 }
+
+const convertBtn = document.getElementById('convertBtn');
+const resultDisplay = document.getElementById('result');
+
+async function convertCurrency() {
+    const amount = document.getElementById('amount').value;
+    const crypto = document.getElementById('cryptoSelect').value;
+
+    // 1. Obtener la URL base desde el .env
+    // Si usas Vite es: import.meta.env.VITE_API_URL
+    // Si usas Next.js o similar es: process.env.NEXT_PUBLIC_API_URL
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL; 
+
+    try {
+        // 2. Construir la consulta completa
+        const response = await fetch(`${baseUrl}/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+
+        // 3. Extraer precio y calcular
+        const price = data[crypto].usd;
+        const total = (amount * price).toFixed(2);
+
+        // 4. Mostrar con la animación que planeamos
+        resultDisplay.innerText = total;
+        resultDisplay.classList.add('animate-result');
+
+    } catch (error) {
+        console.error("Error al conectar:", error);
+        resultDisplay.innerText = "Error API";
+    }
+}
+
+convertBtn.addEventListener('click', convertCurrency);
