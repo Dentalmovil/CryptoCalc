@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoCalc - En Vivo</title>
+    <title>CryptoCalc Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <h1>CryptoCalc</h1>
         
         <div class="input-box">
-            <input type="number" id="amount" placeholder="Cantidad..." value="1">
+            <input type="number" id="amount" value="1" step="any">
             <select id="cryptoSelect">
                 <option value="bitcoin">Bitcoin (BTC)</option>
                 <option value="ethereum">Ethereum (ETH)</option>
@@ -22,12 +22,14 @@
 
         <div class="result-area">
             <p>Total en USD:</p>
-            <span id="result">0.00</span>
+            <span id="result">---</span>
         </div>
 
         <button id="convertBtn">Actualizar Precio</button>
+        <p id="debug-msg" style="font-size: 10px; color: gray; margin-top: 10px;"></p>
     </div>
     <script src="app.js"></script>
 </body>
 </html>
+
 
