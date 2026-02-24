@@ -192,3 +192,19 @@ body.dogecoin { background: radial-gradient(circle, #c2a633 0%, #1a1a1a 100%); }
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Colores clave específicos */
+body.bitcoin { background: radial-gradient(circle, #f7931a 0%, #0b0e11 100%); }
+body.ethereum { background: radial-gradient(circle, #627eea 0%, #0b0e11 100%); }
+body.binancecoin { background: radial-gradient(circle, #f3ba2f 0%, #0b0e11 100%); }
+body.solana { background: radial-gradient(circle, #14f195 0%, #0b0e11 100%); }
+body.cardano { background: radial-gradient(circle, #0033ad 0%, #0b0e11 100%); }
+body.dogecoin { background: radial-gradient(circle, #ba9f33 0%, #0b0e11 100%); }
+body.ripple { background: radial-gradient(circle, #23292f 0%, #0b0e11 100%); }
+body.polygon-ecosystem-token { background: radial-gradient(circle, #8247e5 0%, #0b0e11 100%); }
+
+/* Clase genérica para el resto de las 50 monedas */
+body {
+    background: #0f172a; /* Fondo azul oscuro profesional por defecto */
+    transition: background 0.6s ease-in-out;
+}
