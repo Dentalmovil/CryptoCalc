@@ -2,7 +2,7 @@
 
 **CryptoCalc Elite** es una aplicación web moderna y dinámica diseñada para inversores que buscan rapidez y precisión. Permite calcular conversiones en tiempo real entre las 50 criptomonedas más importantes del mercado y el dólar estadounidense (USD).
 
-![Captura de pantalla de la App](https://via.placeholder.com/800x400?text=CryptoCalc+Elite+Dashboard)
+https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR&utm_source=default
 
 ## ✨ Características Principales
 
