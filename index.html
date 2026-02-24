@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoCalc Pro - 50 Monedas</title>
+    <title>CryptoCalc Elite</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>CryptoCalc</h1>
+        <h1>CryptoCalc Elite</h1>
         
         <div class="input-box">
             <input type="text" id="cryptoSearch" placeholder="🔍 Buscar moneda...">
-            <input type="number" id="amount" value="1" placeholder="Cantidad">
+            <input type="number" id="amount" value="1" step="any">
             
             <select id="cryptoSelect" size="5">
                 <option value="bitcoin" selected>Bitcoin (BTC)</option>
@@ -69,24 +70,27 @@
         </div>
 
         <div class="result-area">
-            <p>Total en USD:</p>
             <span id="result">0.00</span>
+            <p>USD</p>
         </div>
 
-        <button id="convertBtn">Actualizar Precio</button>
+        <div class="chart-container">
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <button id="convertBtn">Actualizar y Ver Gráfica</button>
 
         <div class="referral-box">
-            <p>¿Sin cuenta en Binance?</p>
-            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">¡Regístrate y Gana! 🚀</a>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">Gana USDC en Binance 🚀</a>
         </div>
     </div>
 
     <div id="referralModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>🚀 ¡Regalo para ti!</h2>
-            <p>Empieza a operar en Binance con mi enlace y obtén beneficios exclusivos.</p>
-            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">Abrir mi cuenta</a>
+            <h2>📈 ¡Analiza como un Pro!</h2>
+            <p>He añadido gráficas en tiempo real. Regístrate en Binance con mi link para empezar a invertir.</p>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">Unirme a Binance</a>
         </div>
     </div>
 
