@@ -173,3 +173,22 @@ body.binancecoin button {
     background: #f3ba2f;
     color: #000;
 }
+
+/* Color por defecto (Gris oscuro) */
+body {
+    transition: background 0.5s ease;
+    background: #1a1a1a;
+}
+
+/* Clases dinámicas */
+body.bitcoin { background: radial-gradient(circle, #f7931a 0%, #1a1a1a 100%); }
+body.ethereum { background: radial-gradient(circle, #627eea 0%, #1a1a1a 100%); }
+body.solana { background: radial-gradient(circle, #14f195 0%, #1a1a1a 100%); }
+body.cardano { background: radial-gradient(circle, #0033ad 0%, #1a1a1a 100%); }
+body.dogecoin { background: radial-gradient(circle, #c2a633 0%, #1a1a1a 100%); }
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
