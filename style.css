@@ -208,3 +208,25 @@ body {
     background: #0f172a; /* Fondo azul oscuro profesional por defecto */
     transition: background 0.6s ease-in-out;
 }
+
+#cryptoSearch {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #38bdf8;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 90%;
+    outline: none;
+    transition: 0.3s;
+}
+
+#cryptoSearch:focus {
+    box-shadow: 0 0 10px #38bdf8;
+}
+
+/* Estilo para el select cuando se comporta como lista */
+select[size] {
+    height: auto;
+    max-height: 150px;
+}
+
