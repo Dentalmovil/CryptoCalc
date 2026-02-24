@@ -61,4 +61,11 @@ cryptoSelect.addEventListener('change', updateTheme);
 // Llamarla una vez al inicio para que cargue el color de Bitcoin por defecto
 updateTheme();
 
+// Asegúrate de que esta función esté conectada al evento 'change'
+cryptoSelect.addEventListener('change', () => {
+    const selectedCrypto = cryptoSelect.value;
+    document.body.className = ''; // Limpia clases anteriores
+    document.body.classList.add(selectedCrypto); // Aplica el color si existe en CSS
+});
+
 
