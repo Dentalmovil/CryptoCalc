@@ -101,3 +101,42 @@ async function calculate() {
 
 // Escuchar el clic del botón
 convertBtn.addEventListener('click', calculate);
+
+const amountInput = document.getElementById('amount');
+const cryptoSelect = document.getElementById('crypto-select');
+const resultDisplay = document.getElementById('crypto-result');
+const convertBtn = document.getElementById('btn-convert');
+
+async function convertCurrency() {
+    const amount = amountInput.value;
+    const crypto = cryptoSelect.value;
+
+    // Cambiamos el estado del botón mientras esperamos la API
+    convertBtn.innerText = "Cargando...";
+    convertBtn.style.opacity = "0.7";
+
+    try {
+        // Consultamos la API de CoinGecko directamente
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+
+        // Obtenemos el precio y calculamos
+        const priceInUsd = data[crypto].usd;
+        const total = (amount * priceInUsd).toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+        // Mostramos el resultado
+        resultDisplay.innerText = total;
+
+    } catch (error) {
+        console.error("Error al obtener datos:", error);
+        resultDisplay.innerText = "Error";
+        resultDisplay.style.color = "#f87171";
+    } finally {
+        // Restauramos el botón
+        convertBtn.innerText = "Calcular Conversión";
+        convertBtn.style.opacity = "1";
+    }
+}
+
+// Escuchar el evento del botón
+convertBtn.addEventListener('click', convertCurrency);
