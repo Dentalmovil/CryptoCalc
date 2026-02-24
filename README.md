@@ -1,22 +1,29 @@
-# 🪙 CryptoCalc Pro
+# 🚀 CryptoCalc Elite - Dashboard de Criptomonedas
 
-Una calculadora de criptomonedas moderna, rápida y con diseño elegante que utiliza la API de CoinGecko para obtener precios en tiempo real.
+**CryptoCalc Elite** es una aplicación web moderna y dinámica diseñada para inversores que buscan rapidez y precisión. Permite calcular conversiones en tiempo real entre las 50 criptomonedas más importantes del mercado y el dólar estadounidense (USD).
 
-## 🚀 Funcionalidades
-- **Precios en Vivo**: Datos actualizados directamente desde la blockchain a través de CoinGecko.
-- **Interfaz Glassmorphism**: Diseño minimalista con efectos de desenfoque y modo oscuro.
-- **Animaciones Suaves**: Transiciones fluidas al actualizar los cálculos.
-- **Responsive**: Funciona perfectamente en dispositivos móviles y escritorio.
+![Captura de pantalla de la App](https://via.placeholder.com/800x400?text=CryptoCalc+Elite+Dashboard)
 
-## 🛠️ Tecnologías
-- HTML5 / CSS3 (Animaciones personalizadas)
-- JavaScript Vanilla (Async/Await & Fetch API)
-- [CoinGecko API](https://www.coingecko.com/es/api)
+## ✨ Características Principales
 
-## 📦 Instalación
-1. Clona el repo: `git clone https://github.com/tu-usuario/crypto-calc.git`
-2. Abre `index.html` en tu navegador.
-3. ¡Listo! No requiere servidores complejos.
+* **📈 Gráficas en Tiempo Real**: Visualización de la tendencia de los últimos 7 días mediante **Chart.js**.
+* **🎨 Temas Dinámicos**: La interfaz cambia su esquema de color (degradados) según la moneda seleccionada (Bitcoin, Ethereum, BNB, etc.).
+* **🔍 Buscador Inteligente**: Filtro rápido para encontrar fácilmente cualquier moneda entre las 50 opciones disponibles.
+* **🔔 Feedback Auditivo**: Sonido de confirmación tipo "caja registradora" al completar una conversión con éxito.
+* **📱 Diseño Responsivo**: Totalmente optimizado para su uso en dispositivos móviles y computadoras de escritorio.
+* **🤝 Sistema de Referidos**: Integración con el programa de afiliados de Binance para monetización.
 
----
-Proyecto creado para práctica de desarrollo web y manejo de APIs.
+## 🛠️ Tecnologías Utilizadas
+
+* **HTML5 & CSS3**: Estructura y diseño con efectos de Glassmorphism.
+* **JavaScript (Vanilla)**: Lógica de la aplicación y manipulación del DOM.
+* **CoinGecko API**: Fuente de datos en tiempo real para precios y gráficas históricas.
+* **Chart.js**: Librería para la renderización de gráficas de tendencia.
+* **Web Audio API**: Para la generación de sonidos de interacción.
+
+## 🚀 Instalación y Uso
+
+1. Clona este repositorio:
+   ```bash
+   git clone [https://github.com/TU_USUARIO/TU_REPOSITORIO.git](https://github.com/TU_USUARIO/TU_REPOSITORIO.git)
+
