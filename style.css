@@ -1,232 +1,93 @@
 body {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: white;
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    text-align: center;
-}
-
-input, select {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    margin: 10px;
-    font-size: 1rem;
-}
-
-button {
-    background: #4ecca3;
-    color: #1a1a2e;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background: #45b391;
-    transform: scale(1.05);
-}
-
-#result {
-    font-size: 2rem;
-    color: #4ecca3;
-    font-weight: bold;
-}
-body {
     background: #0f172a;
     color: white;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    transition: background 0.5s ease;
 }
 
+/* Colores Dinámicos */
+body.bitcoin { background: radial-gradient(circle, #f7931a 0%, #0f172a 100%); }
+body.ethereum { background: radial-gradient(circle, #627eea 0%, #0f172a 100%); }
+body.binancecoin { background: radial-gradient(circle, #f3ba2f 0%, #0f172a 100%); }
+body.solana { background: radial-gradient(circle, #14f195 0%, #0f172a 100%); }
+
 .container {
-    background: #1e293b;
-    padding: 2.5rem;
+    background: rgba(30, 41, 59, 0.9);
+    padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     text-align: center;
-    width: 320px;
+    width: 350px;
     border: 1px solid #334155;
 }
 
-h1 { color: #38bdf8; margin-bottom: 1.5rem; }
-
-.input-box { display: flex; flex-direction: column; gap: 10px; }
-
-input, select {
+.input-box input, .input-box select {
+    width: 100%;
     padding: 12px;
+    margin: 8px 0;
     border-radius: 10px;
     border: 1px solid #475569;
-    background: #0f172a;
+    background: #1e293b;
     color: white;
-    font-size: 1rem;
+    box-sizing: border-box;
 }
-
-.result-area { margin: 2rem 0; }
 
 #result {
     font-size: 2.5rem;
     font-weight: bold;
     color: #4ade80;
+    display: block;
+    margin: 15px 0;
 }
 
 button {
     width: 100%;
     padding: 15px;
-    border-radius: 10px;
-    border: none;
     background: #38bdf8;
-    color: #0f172a;
+    border: none;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button:hover { background: #7dd3fc; transform: translateY(-3px); }
+button:hover { background: #7dd3fc; }
 
-/* Animación de entrada suave */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-result {
-    animation: fadeIn 0.5s ease-out;
-}
-
-/* Estilo para que el resultado destaque */
-#result {
-    transition: color 0.3s ease;
-    display: inline-block; /* Necesario para que la transformación funcione */
-}
-:root {
-    /* Define tus propios colores aquí */
-    --bg-principal: #0b0e11;
-    --color-acento: #f3ba2f; /* Amarillo tipo Binance */
-    --color-exito: #00ff88;
-    --color-texto: #ffffff;
-}
-
-body {
-    background: var(--bg-principal);
-    color: var(--color-texto);
-}
-
-.container {
-    border: 1px solid var(--color-acento); /* Borde con el color de acento */
-    box-shadow: 0 0 20px rgba(243, 186, 47, 0.2);
-}
-
-h1 {
-    color: var(--color-acento);
-}
-
-button {
-    background: var(--color-acento);
-    color: black;
-    font-weight: 800;
-}
-
-button:hover {
-    background: #e2ab26; /* Un tono más oscuro al pasar el mouse */
-}
-
-#result {
-    color: var(--color-exito); /* Color para el número final */
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-/* Clase para BNB */
-body.binancecoin { 
-    background: radial-gradient(circle, #f3ba2f 0%, #1a1a1a 100%); 
-}
-
-/* Efecto visual para el botón cuando es BNB */
-body.binancecoin button {
+.binance-btn {
+    display: block;
     background: #f3ba2f;
-    color: #000;
-}
-
-/* Color por defecto (Gris oscuro) */
-body {
-    transition: background 0.5s ease;
-    background: #1a1a1a;
-}
-
-/* Clases dinámicas */
-body.bitcoin { background: radial-gradient(circle, #f7931a 0%, #1a1a1a 100%); }
-body.ethereum { background: radial-gradient(circle, #627eea 0%, #1a1a1a 100%); }
-body.solana { background: radial-gradient(circle, #14f195 0%, #1a1a1a 100%); }
-body.cardano { background: radial-gradient(circle, #0033ad 0%, #1a1a1a 100%); }
-body.dogecoin { background: radial-gradient(circle, #c2a633 0%, #1a1a1a 100%); }
-
-.container {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Colores clave específicos */
-body.bitcoin { background: radial-gradient(circle, #f7931a 0%, #0b0e11 100%); }
-body.ethereum { background: radial-gradient(circle, #627eea 0%, #0b0e11 100%); }
-body.binancecoin { background: radial-gradient(circle, #f3ba2f 0%, #0b0e11 100%); }
-body.solana { background: radial-gradient(circle, #14f195 0%, #0b0e11 100%); }
-body.cardano { background: radial-gradient(circle, #0033ad 0%, #0b0e11 100%); }
-body.dogecoin { background: radial-gradient(circle, #ba9f33 0%, #0b0e11 100%); }
-body.ripple { background: radial-gradient(circle, #23292f 0%, #0b0e11 100%); }
-body.polygon-ecosystem-token { background: radial-gradient(circle, #8247e5 0%, #0b0e11 100%); }
-
-/* Clase genérica para el resto de las 50 monedas */
-body {
-    background: #0f172a; /* Fondo azul oscuro profesional por defecto */
-    transition: background 0.6s ease-in-out;
-}
-
-#cryptoSearch {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #38bdf8;
-    color: white;
+    color: black;
+    text-decoration: none;
     padding: 10px;
     border-radius: 8px;
-    width: 90%;
-    outline: none;
-    transition: 0.3s;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-#cryptoSearch:focus {
-    box-shadow: 0 0 10px #38bdf8;
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
 }
+.modal-content {
+    background: #1e293b;
+    margin: 20% auto;
+    padding: 25px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 350px;
+    position: relative;
+    border: 1px solid #f3ba2f;
+}
+.close-btn { position: absolute; right: 15px; top: 10px; cursor: pointer; font-size: 24px; }
 
-/* Estilo para el select cuando se comporta como lista */
-select[size] {
-    height: auto;
-    max-height: 150px;
-}
 
