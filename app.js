@@ -1,88 +1,65 @@
 const amountInput = document.getElementById('amount');
 const cryptoSelect = document.getElementById('cryptoSelect');
+const cryptoSearch = document.getElementById('cryptoSearch');
 const resultDisplay = document.getElementById('result');
 const convertBtn = document.getElementById('convertBtn');
-const debugMsg = document.getElementById('debug-msg');
+let firstCalc = true;
 
-async function convertCurrency() {
-    const amount = amountInput.value;
-    const crypto = cryptoSelect.value;
-
-    resultDisplay.innerText = "Cargando...";
-    debugMsg.innerText = "Conectando con CoinGecko...";
-
-    try {
-        // Usamos la URL completa directamente para asegurar conexión
-        const url = `https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`;
-        
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-            throw new Error(`Error de red: ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-        // Verificamos si la API devolvió el precio
-        if (data[crypto] && data[crypto].usd) {
-            const price = data[crypto].usd;
-            const total = (amount * price).toLocaleString('en-US', { minimumFractionDigits: 2 });
-            
-            resultDisplay.innerText = total;
-            debugMsg.innerText = "¡Éxito! Datos actualizados.";
-            resultDisplay.style.color = "#4ade80";
-        } else {
-            resultDisplay.innerText = "Error";
-            debugMsg.innerText = "La API no devolvió el precio de " + crypto;
-        }
-
-    } catch (error) {
-        console.error(error);
-        resultDisplay.innerText = "Fallo";
-        debugMsg.innerText = "Error: " + error.message;
-        resultDisplay.style.color = "#f87171";
-    }
+// 1. Sonido de Caja Registradora
+function playSound() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.5);
 }
 
-convertBtn.addEventListener('click', convertCurrency);
-
-// Función para cambiar el color de fondo
-function updateTheme() {
-    const crypto = cryptoSelect.value;
-    // Quitamos cualquier clase de moneda anterior
-    document.body.className = ''; 
-    // Añadimos la clase de la moneda actual
-    document.body.classList.add(crypto);
-}
-
-// Escuchar cuando el usuario cambia la moneda en el selector
-cryptoSelect.addEventListener('change', updateTheme);
-
-// Llamarla una vez al inicio para que cargue el color de Bitcoin por defecto
-updateTheme();
-
-// Asegúrate de que esta función esté conectada al evento 'change'
-cryptoSelect.addEventListener('change', () => {
-    const selectedCrypto = cryptoSelect.value;
-    document.body.className = ''; // Limpia clases anteriores
-    document.body.classList.add(selectedCrypto); // Aplica el color si existe en CSS
-});
-
-const cryptoSearch = document.getElementById('cryptoSearch');
-const options = cryptoSelect.options;
-
-cryptoSearch.addEventListener('input', function() {
+// 2. Buscador de Monedas
+cryptoSearch.addEventListener('input', () => {
     const filter = cryptoSearch.value.toLowerCase();
-    
-    for (let i = 0; i < options.length; i++) {
-        const text = options[i].text.toLowerCase();
-        // Si el nombre de la moneda contiene lo que escribimos, la mostramos
-        if (text.includes(filter)) {
-            options[i].style.display = "";
-        } else {
-            options[i].style.display = "none";
-        }
-    }
+    Array.from(cryptoSelect.options).forEach(opt => {
+        opt.style.display = opt.text.toLowerCase().includes(filter) ? '' : 'none';
+    });
 });
+
+// 3. Cambio de Color de Fondo
+cryptoSelect.addEventListener('change', () => {
+    document.body.className = cryptoSelect.value;
+});
+
+// 4. Conversión Real
+async function convert() {
+    const crypto = cryptoSelect.value;
+    const amount = amountInput.value;
+    if (!amount) return;
+
+    convertBtn.innerText = "Calculando...";
+    try {
+        const resp = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await resp.json();
+        const total = (amount * data[crypto].usd).toLocaleString('en-US', {minimumFractionDigits: 2});
+        
+        resultDisplay.innerText = total;
+        playSound();
+
+        if (firstCalc) {
+            setTimeout(() => { document.getElementById('referralModal').style.display = 'block'; }, 1000);
+            firstCalc = false;
+        }
+    } catch (e) {
+        resultDisplay.innerText = "Error";
+    } finally {
+        convertBtn.innerText = "Actualizar Precio";
+    }
+}
+
+convertBtn.addEventListener('click', convert);
+document.querySelector('.close-btn').onclick = () => document.getElementById('referralModal').style.display = 'none';
+
 
 
