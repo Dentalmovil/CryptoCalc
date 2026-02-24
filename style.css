@@ -105,3 +105,25 @@ button {
 }
 
 button:hover { background: #7dd3fc; transform: translateY(-3px); }
+
+/* Animación de entrada suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-result {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilo para que el resultado destaque */
+#result {
+    transition: color 0.3s ease;
+    display: inline-block; /* Necesario para que la transformación funcione */
+}
