@@ -127,3 +127,39 @@ button:hover { background: #7dd3fc; transform: translateY(-3px); }
     transition: color 0.3s ease;
     display: inline-block; /* Necesario para que la transformación funcione */
 }
+:root {
+    /* Define tus propios colores aquí */
+    --bg-principal: #0b0e11;
+    --color-acento: #f3ba2f; /* Amarillo tipo Binance */
+    --color-exito: #00ff88;
+    --color-texto: #ffffff;
+}
+
+body {
+    background: var(--bg-principal);
+    color: var(--color-texto);
+}
+
+.container {
+    border: 1px solid var(--color-acento); /* Borde con el color de acento */
+    box-shadow: 0 0 20px rgba(243, 186, 47, 0.2);
+}
+
+h1 {
+    color: var(--color-acento);
+}
+
+button {
+    background: var(--color-acento);
+    color: black;
+    font-weight: 800;
+}
+
+button:hover {
+    background: #e2ab26; /* Un tono más oscuro al pasar el mouse */
+}
+
+#result {
+    color: var(--color-exito); /* Color para el número final */
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
