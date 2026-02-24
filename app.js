@@ -28,3 +28,20 @@ async function calculateCrypto() {
 
 // Eventos
 convertBtn.addEventListener('click', calculateCrypto);
+const btn = document.querySelector('button'); // El botón "Actualizar Precio"
+
+btn.onclick = async () => {
+    const cantidad = document.querySelector('input').value;
+    const crypto = document.querySelector('select').value;
+    const display = document.querySelector('span'); // Donde dice 0.00
+
+    try {
+        const resp = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await resp.json();
+        const precio = data[crypto].usd;
+        
+        display.innerText = (cantidad * precio).toLocaleString('en-US');
+    } catch (error) {
+        alert("Error al conectar con la API. Intenta en un minuto.");
+    }
+};
