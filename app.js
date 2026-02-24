@@ -68,4 +68,21 @@ cryptoSelect.addEventListener('change', () => {
     document.body.classList.add(selectedCrypto); // Aplica el color si existe en CSS
 });
 
+const cryptoSearch = document.getElementById('cryptoSearch');
+const options = cryptoSelect.options;
+
+cryptoSearch.addEventListener('input', function() {
+    const filter = cryptoSearch.value.toLowerCase();
+    
+    for (let i = 0; i < options.length; i++) {
+        const text = options[i].text.toLowerCase();
+        // Si el nombre de la moneda contiene lo que escribimos, la mostramos
+        if (text.includes(filter)) {
+            options[i].style.display = "";
+        } else {
+            options[i].style.display = "none";
+        }
+    }
+});
+
 
