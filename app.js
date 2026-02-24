@@ -46,4 +46,19 @@ async function convertCurrency() {
 
 convertBtn.addEventListener('click', convertCurrency);
 
+// Función para cambiar el color de fondo
+function updateTheme() {
+    const crypto = cryptoSelect.value;
+    // Quitamos cualquier clase de moneda anterior
+    document.body.className = ''; 
+    // Añadimos la clase de la moneda actual
+    document.body.classList.add(crypto);
+}
+
+// Escuchar cuando el usuario cambia la moneda en el selector
+cryptoSelect.addEventListener('change', updateTheme);
+
+// Llamarla una vez al inicio para que cargue el color de Bitcoin por defecto
+updateTheme();
+
 
