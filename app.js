@@ -1,4 +1,49 @@
 // app.js
+
+// Intentamos leer del entorno, si no existe (navegador puro), usamos la URL directa
+const BASE_URL = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL) 
+                 ? process.env.NEXT_PUBLIC_API_URL 
+                 : 'https://api.coingecko.com/api/v3';
+
+const amountInput = document.getElementById('amount');
+const cryptoSelect = document.getElementById('cryptoSelect');
+const resultDisplay = document.getElementById('result');
+const convertBtn = document.getElementById('convertBtn');
+
+async function convertCurrency() {
+    const amount = amountInput.value;
+    const crypto = cryptoSelect.value;
+
+    if (amount <= 0) return;
+
+    convertBtn.innerText = "Cargando...";
+
+    try {
+        // Usamos la BASE_URL que configuramos arriba
+        const response = await fetch(`${BASE_URL}/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+
+        const price = data[crypto].usd;
+        const total = (amount * price).toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+        // Aplicamos el resultado con la animación
+        resultDisplay.innerText = total;
+        resultDisplay.classList.remove('animate-result');
+        void resultDisplay.offsetWidth; // Truco para reiniciar animación
+        resultDisplay.classList.add('animate-result');
+
+    } catch (error) {
+        console.error("Error:", error);
+        resultDisplay.innerText = "Error API";
+    } finally {
+        convertBtn.innerText = "Actualizar Precio";
+    }
+}
+
+convertBtn.addEventListener('click', convertCurrency);
+
+
+// app.js
 const amountInput = document.getElementById('amount');
 const cryptoSelect = document.getElementById('cryptoSelect');
 const resultDisplay = document.getElementById('result');
