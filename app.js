@@ -256,3 +256,52 @@ async function convertCurrency() {
 }
 
 convertBtn.addEventListener('click', convertCurrency);
+
+// Seleccionamos los elementos con los IDs limpios
+const amountInput = document.getElementById('amount');
+const cryptoSelect = document.getElementById('cryptoSelect');
+const resultDisplay = document.getElementById('result');
+const convertBtn = document.getElementById('convertBtn');
+
+async function convertCurrency() {
+    const amount = amountInput.value;
+    const crypto = cryptoSelect.value;
+
+    // Validación simple
+    if (amount <= 0 || amount === "") {
+        resultDisplay.innerText = "0.00";
+        return;
+    }
+
+    convertBtn.innerText = "Cargando...";
+
+    try {
+        // Usamos la URL directa porque el navegador no lee archivos .env directamente
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+
+        // Extraemos el precio del JSON
+        const priceInUsd = data[crypto].usd;
+        
+        // Hacemos la matemática: Cantidad * Precio
+        const total = (amount * priceInUsd).toLocaleString('en-US', { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        });
+
+        // Mostramos el resultado y aplicamos efecto visual
+        resultDisplay.innerText = total;
+        resultDisplay.style.color = "#4ade80"; // Color verde éxito
+
+    } catch (error) {
+        console.error("Error al obtener datos:", error);
+        resultDisplay.innerText = "Error API";
+        resultDisplay.style.color = "#f87171"; // Color rojo error
+    } finally {
+        convertBtn.innerText = "Actualizar Precio";
+    }
+}
+
+// Escuchar el click
+convertBtn.addEventListener('click', convertCurrency);
+
