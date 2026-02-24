@@ -140,3 +140,41 @@ async function convertCurrency() {
 
 // Escuchar el evento del botón
 convertBtn.addEventListener('click', convertCurrency);
+
+async function convertCurrency() {
+    const amount = amountInput.value;
+    const crypto = cryptoSelect.value;
+
+    // Resetear el estilo por si hubo error previo
+    resultDisplay.style.color = "#4ade80";
+    
+    // Quitar la clase de animación para poder reiniciarla
+    resultDisplay.classList.remove('animate-result');
+
+    convertBtn.innerText = "Cargando...";
+    convertBtn.disabled = true;
+
+    try {
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+
+        const priceInUsd = data[crypto].usd;
+        const total = (amount * priceInUsd).toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+        // Insertar el resultado
+        resultDisplay.innerText = total;
+
+        // Forzar un "reflujo" para que el navegador note que quitamos la clase y la vuelva a poner
+        void resultDisplay.offsetWidth; 
+        
+        // Agregar la clase de animación
+        resultDisplay.classList.add('animate-result');
+
+    } catch (error) {
+        resultDisplay.innerText = "Error";
+        resultDisplay.style.color = "#f87171";
+    } finally {
+        convertBtn.innerText = "Actualizar Precio";
+        convertBtn.disabled = false;
+    }
+}
