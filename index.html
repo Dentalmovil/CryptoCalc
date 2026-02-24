@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoCalc Pro</title>
+    <title>CryptoCalc Pro - 50 Monedas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,82 +11,88 @@
         <h1>CryptoCalc</h1>
         
         <div class="input-box">
-            <input type="number" id="amount" value="1" step="any">
-            <select id="cryptoSelect">
-    <option value="bitcoin">Bitcoin (BTC)</option>
-    <option value="ethereum">Ethereum (ETH)</option>
-    <option value="tether">Tether (USDT)</option>
-    <option value="binancecoin">BNB (BNB)</option>
-    <option value="solana">Solana (SOL)</option>
-    <option value="ripple">Ripple (XRP)</option>
-    <option value="usd-coin">USD Coin (USDC)</option>
-    <option value="cardano">Cardano (ADA)</option>
-    <option value="dogecoin">Dogecoin (DOGE)</option>
-    <option value="avalanche-2">Avalanche (AVAX)</option>
-
-    <option value="polkadot">Polkadot (DOT)</option>
-    <option value="tron">TRON (TRX)</option>
-    <option value="chainlink">Chainlink (LINK)</option>
-    <option value="polygon-ecosystem-token">Polygon (POL)</option>
-    <option value="shiba-inu">Shiba Inu (SHIB)</option>
-    <option value="dai">Dai (DAI)</option>
-    <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
-    <option value="litecoin">Litecoin (LTC)</option>
-    <option value="uniswap">Uniswap (UNI)</option>
-    <option value="near">NEAR Protocol (NEAR)</option>
-    <option value="kaspa">Kaspa (KAS)</option>
-    <option value="pepe">Pepe (PEPE)</option>
-    <option value="internet-computer">Internet Computer (ICP)</option>
-    <option value="ethereum-classic">Ethereum Classic (ETC)</option>
-    <option value="monero">Monero (XMR)</option>
-    <option value="stellar">Stellar (XLM)</option>
-    <option value="aptos">Aptos (APT)</option>
-    <option value="render-token">Render (RENDER)</option>
-    <option value="stacks">Stacks (STX)</option>
-    <option value="okb">OKB (OKB)</option>
-
-    <option value="cosmos">Cosmos (ATOM)</option>
-    <option value="filecoin">Filecoin (FIL)</option>
-    <option value="arbitrum">Arbitrum (ARB)</option>
-    <option value="immutable-x">Immutable (IMX)</option>
-    <option value="the-graph">The Graph (GRT)</option>
-    <option value="optimism">Optimism (OP)</option>
-    <option value="vechain">VeChain (VET)</option>
-    <option value="near">NEAR (NEAR)</option>
-    <option value="theta-token">Theta Network (THETA)</option>
-    <option value="fantom">Fantom (FTM)</option>
-    <option value="thorchain">THORChain (RUNE)</option>
-    <option value="algorand">Algorand (ALGO)</option>
-    <option value="flow">Flow (FLOW)</option>
-    <option value="kucoin-shares">KuCoin Token (KCS)</option>
-    <option value="havven">Synthetix (SNX)</option>
-    <option value="aave">Aave (AAVE)</option>
-    <option value="eos">EOS (EOS)</option>
-    <option value="quant-network">Quant (QNT)</option>
-    <option value="gala">Gala (GALA)</option>
-    <option value="bittorrent">BitTorrent (BTT)</option>
-</select>
-
-
+            <input type="text" id="cryptoSearch" placeholder="🔍 Buscar moneda...">
+            <input type="number" id="amount" value="1" placeholder="Cantidad">
+            
+            <select id="cryptoSelect" size="5">
+                <option value="bitcoin" selected>Bitcoin (BTC)</option>
+                <option value="ethereum">Ethereum (ETH)</option>
+                <option value="tether">Tether (USDT)</option>
+                <option value="binancecoin">BNB (BNB)</option>
+                <option value="solana">Solana (SOL)</option>
+                <option value="ripple">Ripple (XRP)</option>
+                <option value="usd-coin">USD Coin (USDC)</option>
+                <option value="cardano">Cardano (ADA)</option>
+                <option value="dogecoin">Dogecoin (DOGE)</option>
+                <option value="avalanche-2">Avalanche (AVAX)</option>
+                <option value="polkadot">Polkadot (DOT)</option>
+                <option value="tron">TRON (TRX)</option>
+                <option value="chainlink">Chainlink (LINK)</option>
+                <option value="polygon-ecosystem-token">Polygon (POL)</option>
+                <option value="shiba-inu">Shiba Inu (SHIB)</option>
+                <option value="dai">Dai (DAI)</option>
+                <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
+                <option value="litecoin">Litecoin (LTC)</option>
+                <option value="uniswap">Uniswap (UNI)</option>
+                <option value="near">NEAR Protocol (NEAR)</option>
+                <option value="kaspa">Kaspa (KAS)</option>
+                <option value="pepe">Pepe (PEPE)</option>
+                <option value="internet-computer">Internet Computer (ICP)</option>
+                <option value="ethereum-classic">Ethereum Classic (ETC)</option>
+                <option value="monero">Monero (XMR)</option>
+                <option value="stellar">Stellar (XLM)</option>
+                <option value="aptos">Aptos (APT)</option>
+                <option value="render-token">Render (RENDER)</option>
+                <option value="stacks">Stacks (STX)</option>
+                <option value="okb">OKB (OKB)</option>
+                <option value="cosmos">Cosmos (ATOM)</option>
+                <option value="filecoin">Filecoin (FIL)</option>
+                <option value="arbitrum">Arbitrum (ARB)</option>
+                <option value="immutable-x">Immutable (IMX)</option>
+                <option value="the-graph">The Graph (GRT)</option>
+                <option value="optimism">Optimism (OP)</option>
+                <option value="vechain">VeChain (VET)</option>
+                <option value="theta-token">Theta Network (THETA)</option>
+                <option value="fantom">Fantom (FTM)</option>
+                <option value="thorchain">THORChain (RUNE)</option>
+                <option value="algorand">Algorand (ALGO)</option>
+                <option value="flow">Flow (FLOW)</option>
+                <option value="kucoin-shares">KuCoin Token (KCS)</option>
+                <option value="havven">Synthetix (SNX)</option>
+                <option value="aave">Aave (AAVE)</option>
+                <option value="eos">EOS (EOS)</option>
+                <option value="quant-network">Quant (QNT)</option>
+                <option value="gala">Gala (GALA)</option>
+                <option value="bittorrent">BitTorrent (BTT)</option>
+                <option value="helium">Helium (HNT)</option>
+            </select>
         </div>
 
         <div class="result-area">
             <p>Total en USD:</p>
-            <span id="result">---</span>
+            <span id="result">0.00</span>
         </div>
 
         <button id="convertBtn">Actualizar Precio</button>
-        <p id="debug-msg" style="font-size: 10px; color: gray; margin-top: 10px;"></p>
-   <div class="referral-box">
-    <p>¿No tienes cuenta en Binance?</p>
-    <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR&utm_source=default" 
-       target="_blank" class="binance-btn">
-        ¡Regístrate y Gana USDC! 🚀
-    </a>
-</div>
- </div>
+
+        <div class="referral-box">
+            <p>¿Sin cuenta en Binance?</p>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">¡Regístrate y Gana! 🚀</a>
+        </div>
+    </div>
+
+    <div id="referralModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>🚀 ¡Regalo para ti!</h2>
+            <p>Empieza a operar en Binance con mi enlace y obtén beneficios exclusivos.</p>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_VU9YR" target="_blank" class="binance-btn">Abrir mi cuenta</a>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
