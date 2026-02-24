@@ -63,3 +63,41 @@ btn.onclick = async () => {
         alert("Error al conectar con la API. Intenta en un minuto.");
     }
 };
+
+const amountInput = document.getElementById('amount');
+const cryptoSelect = document.getElementById('cryptoSelect');
+const resultDisplay = document.getElementById('result');
+const convertBtn = document.querySelector('button');
+
+async function calculate() {
+    const amount = amountInput.value;
+    const crypto = cryptoSelect.value;
+
+    // Validación para no enviar valores vacíos
+    if (amount <= 0) {
+        resultDisplay.innerText = "0.00";
+        return;
+    }
+
+    try {
+        // Llamada directa a la API (Sin depender del .env)
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+        const data = await response.json();
+        
+        // Extraemos el precio
+        const price = data[crypto].usd;
+        
+        // Calculamos el total
+        const total = (amount * price).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        
+        // Mostramos el resultado
+        resultDisplay.innerText = total;
+        
+    } catch (error) {
+        console.error("Error:", error);
+        resultDisplay.innerText = "Error API";
+    }
+}
+
+// Escuchar el clic del botón
+convertBtn.addEventListener('click', calculate);
